@@ -12,15 +12,13 @@
     </header>
 
     <section>
-      <h2>Overview</h2>
-      <p>
-        Welcome to our monitoring dashboard. Here you can find real-time data
-        about our application's performance.
-      </p>
-      <p>
-        This is just a placeholder for the content. You can replace it with
-        actual metrics and charts.
-      </p>
+      <h2>Website Monitoring</h2>
+      <form id="websiteForm">
+        <label for="websiteUrl">Website URL:</label>
+        <input type="text" id="websiteUrl" name="websiteUrl" required />
+        <button type="submit">Monitor</button>
+      </form>
+      <div id="monitoringResults"></div>
     </section>
 
     <footer>
