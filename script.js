@@ -2,10 +2,7 @@ document
   .getElementById("websiteForm")
   .addEventListener("submit", function (event) {
     event.preventDefault();
-
     var websiteUrl = document.getElementById("websiteUrl").value;
-
-    // Make an AJAX request to fetch website metrics
     fetchMetrics(websiteUrl);
   });
 
@@ -42,6 +39,15 @@ function fetchMetrics(websiteUrl) {
         // Get the title of the webpage
         var title = doc.querySelector("title").textContent;
 
+        // Count the number of paragraphs
+        var paragraphs = doc.querySelectorAll("p").length;
+
+        // Count the number of images
+        var images = doc.querySelectorAll("img").length;
+
+        // Count the number of links
+        var links = doc.querySelectorAll("a").length;
+
         // Display the metrics
         var monitoringResults = document.getElementById("monitoringResults");
         monitoringResults.innerHTML =
@@ -52,6 +58,14 @@ function fetchMetrics(websiteUrl) {
           "<p>Status Code: <strong>" + statusCode + "</strong></p>";
         monitoringResults.innerHTML +=
           "<p>Response Time: <strong>" + responseTime + " ms</strong></p>";
+
+        // Content metrics
+        monitoringResults.innerHTML +=
+          "<p>Number of Paragraphs: <strong>" + paragraphs + "</strong></p>";
+        monitoringResults.innerHTML +=
+          "<p>Number of Images: <strong>" + images + "</strong></p>";
+        monitoringResults.innerHTML +=
+          "<p>Number of Links: <strong>" + links + "</strong></p>";
       });
     })
     .catch((error) => {
